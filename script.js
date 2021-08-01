@@ -1,28 +1,66 @@
 let videoPlayer = document.querySelector("video");
 let recordBtn = document.querySelector("#record");
 let captureBtn = document.querySelector("#capture");
+let body = document.querySelector("body");
 
 let mediaRecorder;
 let chunks = [];
 let isRecording = false;
+let filter = "";
+
+let allFilters = document.querySelectorAll(".filter");
+for (let i = 0; i < allFilters.length; i++) {
+  allFilters[i].addEventListener("click", function (e) {
+    let prevFilter = document.querySelector(".filter-div");
+
+    if (prevFilter) prevFilter.remove();
+
+    let color = e.currentTarget.style.backgroundColor;
+    filter = color;
+
+    let div = document.createElement("div");
+    div.classList.add("filter-div");
+    div.style.backgroundColor = color;
+
+    body.append(div);
+  });
+}
 
 recordBtn.addEventListener("click", function () {
+  let innerSpan = recordBtn.querySelector("span");
+  let prevFilter = document.querySelector(".filter-div");
+
+  if (prevFilter) prevFilter.remove();
+  filter = "";
+
   if (isRecording) {
     mediaRecorder.stop();
     isRecording = false;
+    innerSpan.classList.remove("record-animation");
   } else {
     mediaRecorder.start();
     isRecording = true;
+    innerSpan.classList.add("record-animation");
   }
 });
 
 captureBtn.addEventListener("click", function () {
+  let innerSpan = captureBtn.querySelector("span");
+  innerSpan.classList.add("capture-animation");
+  setTimeout(function () {
+    innerSpan.classList.remove("capture-animation");
+  }, 1000);
   let canvas = document.createElement("canvas");
   canvas.width = videoPlayer.videoWidth;
   canvas.height = videoPlayer.videoHeight;
 
   let tool = canvas.getContext("2d");
   tool.drawImage(videoPlayer, 0, 0);
+
+  if (filter != "") {
+    tool.fillStyle = filter;
+    tool.fillRect(0, 0, canvas.width, canvas.height);
+  }
 
   let url = canvas.toDataURL();
 

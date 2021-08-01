@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.video-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: black;
+}
+
+video {
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  position: absolute;
+  right: 50px;
+  height: 100px;
+  width: 100px;
+  border: none;
+  border-radius: 50%;
+  background-color: black;
+  border: 8px solid white;
+  z-index: 3;
+}
+
+button span {
+  height: 60%;
+  width: 60%;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: red;
+}
+
+#record {
+  top: 200px;
+}
+
+#record span {
+  background-color: red;
+}
+
+#capture {
+  top: 400px;
+}
+
+#capture span {
+  background-color: white;
+}
+
+.filters {
+  z-index: 3;
+  height: 12rem;
+  width: 5rem;
+  border: 1px solid;
+  position: fixed;
+  top: 20vh;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter {
+  border: 1px solid;
+  flex-grow: 1;
+  background-blend-mode: color-burn;
+  background-size: cover;
+  background-image: url(https://images-na.ssl-images-amazon.com/images/I/91wcUPNHFEL.png);
+}
+
+.zoom {
+  z-index: 3;
+  height: 8rem;
+  width: 4rem;
+  position: fixed;
+  top: 8vh;
+  right: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.zoom div {
+  background-color: #332e2e;
+  flex-grow: 1;
+  color: white;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.capture-animation {
+  animation: shrinkDownUp;
+  animation-duration: 1s;
+}
+
+.record-animation {
+  animation: shrinkDownUp;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shrinkDownUp {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.filter-div {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
