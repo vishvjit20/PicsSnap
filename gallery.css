@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.media-card {
+  height: 20rem;
+  width: 20rem;
+  border: 1px solid;
+  margin-top: 20px;
+}
+
+.actual-media {
+  border: 1px solid;
+  width: 100%;
+  height: 80%;
+}
+
+.actual-media img,
+.actual-media video {
+  height: 100%;
+  width: 100%;
+}
+
+.media-buttons {
+  border: 1px solid;
+  height: 20%;
+  width: 100%;
+}
+
+.media-buttons button {
+  height: 50%;
+  width: 100%;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.media-download {
+  background-color: black;
+  border: none;
+}
+
+.media-delete {
+  background-color: chocolate;
+  border: none;
+}
