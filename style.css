@@ -58,8 +58,8 @@ button span {
   width: 5rem;
   border: 1px solid;
   position: fixed;
-  top: 20vh;
-  left: 2rem;
+  top: 33vh;
+  left: 3.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -74,21 +74,39 @@ button span {
 
 .zoom {
   z-index: 3;
-  height: 8rem;
-  width: 4rem;
+  height: 4rem;
+  width: 8rem;
   position: fixed;
   top: 8vh;
-  right: 4rem;
+  right: 3rem;
   display: flex;
-  flex-direction: column;
 }
 
 .zoom div {
   background-color: #332e2e;
   flex-grow: 1;
   color: white;
-  font-size: 3rem;
-  text-align: center;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoom div:nth-child(1) {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.zoom div:nth-child(2) {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.zoom div:hover {
+  background-color: #7f8fa6;
+  color: #332e2e;
+  cursor: pointer;
+  user-select: none;
 }
 
 .capture-animation {

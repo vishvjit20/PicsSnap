@@ -1,5 +1,6 @@
 let req = indexedDB.open("gallery");
 let db;
+let noOfMedia = 0;
 
 req.addEventListener("success", function () {
   db = req.result;
@@ -27,14 +28,25 @@ function viewMedia() {
   if (!db) return;
 
   let galleryContainer = document.querySelector(".gallery-container");
+  let backBtn = document.querySelector(".back-btn");
+  galleryContainer.classList.remove("background-text");
 
   let tx = db.transaction("media", "readwrite");
   let mediaObjectStore = tx.objectStore("media");
   let req = mediaObjectStore.openCursor();
+
+  backBtn.addEventListener("click", function () {
+    location.assign("gallery.html");
+  });
+
+  backBtn.addEventListener("click", function () {
+    location.assign("index.html");
+  });
+
   req.addEventListener("success", function () {
     cursor = req.result;
     if (cursor) {
-      console.log(cursor.value);
+      noOfMedia++;
 
       let mediaCard = document.createElement("div");
       mediaCard.classList.add("media-card");
@@ -83,6 +95,10 @@ function viewMedia() {
 
       galleryContainer.append(mediaCard);
       cursor.continue();
+    }
+    if (noOfMedia == 0) {
+      galleryContainer.classList.add("background-text");
+      galleryContainer.innerText = "No Media present";
     }
   });
 }
