@@ -141,7 +141,75 @@ button span {
 }
 
 #gallery {
-  bottom: 4rem;
+  top: 80%;
+  /* left: 5%; */
   color: #ffffff;
   font-size: 1.1rem;
+}
+
+@media only screen and (max-width: 650px) {
+  .filters {
+    display: flex;
+    flex-direction: row;
+    height: 4rem;
+    width: 12rem;
+    position: absolute;
+    top: 1vh;
+    left: 10%;
+  }
+
+  .zoom {
+    z-index: 3;
+    height: 3rem;
+    width: 6rem;
+    position: fixed;
+    top: 1vh;
+    left: 70%;
+    display: flex;
+  }
+
+  button {
+    position: absolute;
+
+    height: 70px;
+    width: 70px;
+    border: none;
+    border-radius: 50%;
+    background-color: black;
+    border: 4px solid white;
+    z-index: 3;
+  }
+
+  button span {
+    height: 70%;
+    width: 70%;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: red;
+  }
+
+  #record {
+    left: 35%;
+    top: 80%;
+  }
+
+  #record span {
+    background-color: red;
+  }
+
+  #capture {
+    left: 65%;
+    top: 80%;
+  }
+
+  #gallery {
+    top: 80%;
+    left: 5%;
+    color: #ffffff;
+    font-size: 1.1rem;
+  }
+
+  #capture span {
+    background-color: white;
+  }
 }
